@@ -5,30 +5,31 @@ class Node():
         self.action = action
         
     
-class QueueFrontier():
+class StackFrontier():
     def __init__(self):
-        self.queue = []
+        self.stack = []
 
     # Add an element
     def add(self, item):
-        self.queue.append(item)
+        self.stack.append(item)
 
     def is_empty(self):
-        return len(self.queue) == 0
-
+        return len(self.stack) == 0
     # Remove an element
     def pop(self):
         if self.is_empty():
             return None
-        return self.queue.pop(0)
+        node = self.stack[-1]
+        self.stack = self.stack[:-1]
+        return node
 
     def top(self):
         if self.is_empty():
             return None
-        return self.queue[0]
+        return self.stack[0]
     
     def contains_state(self, state):
-        return any(node.state == state for node in self.queue)
+        return any(node.state == state for node in self.stack)
     
 
 def breadth_first_search(initial,goal):
@@ -38,7 +39,7 @@ def breadth_first_search(initial,goal):
 
     #Keep starting node in the frontier
     start =Node(state=initial,parent=None,action=None)
-    frontier=QueueFrontier()
+    frontier=StackFrontier()
     frontier.add(start)
     
     while True:
