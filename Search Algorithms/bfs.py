@@ -60,7 +60,7 @@ def breadth_first_search(initial,goal):
                  states.append(node.state)
                  node = node.parent
             actions.reverse()
-            states.reverse
+            states.reverse()
             return actions,states
         
         #Add the node to the set of explored nodes
