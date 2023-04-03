@@ -23,11 +23,6 @@ class QueueFrontier():
         if self.is_empty():
             return None
         return self.queue.pop(0)
-
-    def top(self):
-        if self.is_empty():
-            return None
-        return self.queue[0]
     
     def contains_state(self, state):
         return any(node.state == state for node in self.queue)
