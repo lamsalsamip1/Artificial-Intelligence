@@ -1,3 +1,5 @@
+#Implementation of BREADTH FIRST SEARCH Algorithm
+
 class Node():
     def __init__(self, state, parent, action):
         self.state = state
