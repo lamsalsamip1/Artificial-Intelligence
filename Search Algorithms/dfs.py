@@ -1,3 +1,5 @@
+## Implementation of  DEPTH FIRST SEARCH
+
 class Node():
     def __init__(self, state, parent, action):
         self.state = state
@@ -32,7 +34,7 @@ class StackFrontier():
         return any(node.state == state for node in self.stack)
     
 
-def breadth_first_search(initial,goal):
+def depth_first_search(initial,goal):
 
     explored=set()
     num_explored=0
@@ -88,7 +90,7 @@ graph={
     "Maharajgunj":{"Left":"Baluwatar","Right":"Budhanilkantha"}
 }
 
-path,locations,num_exp = breadth_first_search("Samakhushi","Lazimpat")
+path,locations,num_exp = depth_first_search("Samakhushi","Lazimpat")
 print(f"The path to take is :")
 for item in path:
     print(f"-{item}",end="")
