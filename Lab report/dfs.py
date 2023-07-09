@@ -2,9 +2,9 @@
 def expand(node, graph):
   
     if node in graph.keys():
+        # print(graph[node].reverse())
         return graph[node]
     return []
-
 
 def DFS(start,goal,graph):
 
@@ -17,12 +17,14 @@ def DFS(start,goal,graph):
     while stack:
         node=stack.pop()
         path.append(node)
+        if node ==  goal:
+            return path
+        
         for child in expand(node,graph):
-            if child == goal:
-                return [path,child]
             if child not in reached:
                 reached.append(child)
                 stack.append(child)
+       
     return False
 
 graph ={
@@ -34,6 +36,6 @@ graph ={
 
 result = DFS('A','E',graph)
 if result:
-    print(f"The path is {'->'.join(result[0])}->{result[1]}")
+    print(f"The path is {'->'.join(result)}")
 else:
     print("No solution")
