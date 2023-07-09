@@ -11,15 +11,15 @@ def DFS(start,goal,graph):
     #Initializing a stack
     stack=[start]
     reached=[start]
+    path=[]
     
-    
-
     #while queue is not empty
     while stack:
         node=stack.pop()
+        path.append(node)
         for child in expand(node,graph):
             if child == goal:
-                return [reached,child]
+                return [path,child]
             if child not in reached:
                 reached.append(child)
                 stack.append(child)
@@ -32,7 +32,7 @@ graph ={
     'F':['G'],
 }
 
-result = DFS('A','G',graph)
+result = DFS('A','E',graph)
 if result:
     print(f"The path is {'->'.join(result[0])}->{result[1]}")
 else:
